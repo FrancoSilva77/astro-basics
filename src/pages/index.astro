@@ -1,16 +1,26 @@
 ---
+import Layout from '../layouts/Layout.astro';
 
+const name = 'Franco Silva';
+const title = 'Home Page'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title={title}>
+
+  <h1>{name}</h1>
+
+  <p>Momento actual: {new Date().toLocaleTimeString()}</p>
+  <p id="current-time">Momento actual real:</p>
+
+
+	<script>
+  // Client only
+  const currentTimeParagraph = document.querySelector('#current-time') as HTMLParagraphElement
+
+  const currentTime: string = new Date().toLocaleTimeString();
+
+  currentTimeParagraph.innerText = `Momento actual: ${currentTime}`;
+</script>
+</Layout>
+
+
